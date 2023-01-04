@@ -13,9 +13,20 @@ public class Task<T> implements Comparable<T>, Callable<T> {
     public void setTask(Callable<T> task){
         this.task = task;
     }
+    public static Task createTask(Callable task, int priority){
+        TaskType taskType = TaskType.OTHER;
+        try{
+            taskType.setPriority(priority);
+        } catch (IllegalArgumentException e){
+            System.out.println(e.getMessage());
+        }
+        return new Task(taskType, task);
+    }
+
+
     @Override
-    public int compareTo(T o) {
-        return 0;
+    public int compareTo(T o) {  // by taskTypePriority
+        return this.taskType.getPriorityValue() - ((Task<T>)o).taskType.getPriorityValue();
     }
 
     public TaskType getTaskType(){
@@ -23,6 +34,9 @@ public class Task<T> implements Comparable<T>, Callable<T> {
     }
     public int getPriority(){
         return taskType.getPriorityValue();
+    }
+    public void setPriority(int priority){
+        taskType.setPriority(priority);
     }
 
     @Override
