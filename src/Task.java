@@ -15,17 +15,18 @@ public class Task<T> implements Comparable<T>, Callable<T> {
     }
 
     // factory method that creates a task using only a callable object and a priority
-    public static Task createTask(Callable task, int priority){
-        TaskType taskType = TaskType.OTHER;
-        try{
-            taskType.setPriority(priority);
-        }
-        catch (IllegalArgumentException e){
-            System.out.println(e.getMessage());
-            return null;
-        }
-        return new Task(taskType, task);
-    }
+//    public static Task createTask(Callable task, int priority){
+//        TaskType taskType = TaskType.OTHER;
+//        try{
+//            taskType.setPriority(priority);
+//        }
+//        catch (IllegalArgumentException e){
+//            System.out.println(e.getMessage());
+//            return null;
+//        }
+//        Task newTask = new Task(taskType, task);
+//        return newTask;
+//    }
     @Override
     public int compareTo(T o) {  // by taskTypePriority
         return this.taskType.getPriorityValue() - ((Task<T>)o).taskType.getPriorityValue();

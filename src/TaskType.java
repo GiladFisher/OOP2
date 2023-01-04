@@ -10,10 +10,38 @@ public enum TaskType {
     OTHER(3){
         @Override
         public String toString(){return "Unknown Task";}
+    },
+    OTHER2(4){
+        @Override
+        public String toString(){return "Unknown Task";}
+    },
+    OTHER3(5){
+        @Override
+        public String toString(){return "Unknown Task";}
+    },
+    OTHER4(6){
+        @Override
+        public String toString(){return "Unknown Task";}
+    },
+    OTHER5(7){
+        @Override
+        public String toString(){return "Unknown Task";}
+    },
+    OTHER6(8){
+        @Override
+        public String toString(){return "Unknown Task";}
+    },
+    OTHER7(9){
+        @Override
+        public String toString(){return "Unknown Task";}
+    },
+    OTHER8(10){
+        @Override
+        public String toString(){return "Unknown Task";}
     };
     private int typePriority;
     private TaskType(int priority){
-        if (validatePriority(priority)) typePriority = priority;
+        if (validatePriority(priority)) this.typePriority = priority;
         else
             throw new IllegalArgumentException("Priority is not an integer");
     }
@@ -34,7 +62,7 @@ public enum TaskType {
      * @return whether the priority is valid or not
      */
     private static boolean validatePriority(int priority){
-        if (priority < 1 || priority >10) return false;
+        if (priority < 1 || priority > 10) return false;
         return true;
     }
 }
