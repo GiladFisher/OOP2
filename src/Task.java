@@ -1,8 +1,10 @@
-import java.util.concurrent.Callable;
+import java.util.concurrent.*;
 
 public class Task<T> implements Comparable<T>, Callable<T> {
     private final TaskType taskType;
     private Callable<T> task = null;
+
+    private Future<T> future;
     public Task(TaskType taskType, Callable<T> task){
         this.taskType = taskType;
         this.task = task;
@@ -10,6 +12,11 @@ public class Task<T> implements Comparable<T>, Callable<T> {
     public Task(Callable<T> task){
         this.taskType = TaskType.OTHER; // Default task type
         this.task = task;
+    }
+
+    public static Task createTask(Callable call, TaskType type) {
+        Task task = new Task(type, call);
+        return task;
     }
 
 
@@ -51,5 +58,18 @@ public class Task<T> implements Comparable<T>, Callable<T> {
     @Override
     public T call() throws Exception {
         return task.call();
+    }
+    public Future<T> getFuture(){
+        return future;
+    }
+    public void setFuture(Future<T> future){
+        this.future = future;
+    }
+    public T get() throws InterruptedException , ExecutionException {
+        return future.get();
+    }
+    public T get(long num, TimeUnit unit) throws Exception {
+        unit.sleep(num);
+        return future.get();
     }
 }
