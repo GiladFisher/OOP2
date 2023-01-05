@@ -7,9 +7,12 @@ public class Task<T> implements Comparable<T>, Callable<T> {
         this.taskType = taskType;
         this.task = task;
     }
-    public Task(TaskType taskType){
-        this.taskType = taskType;
+    public Task(Callable<T> task){
+        this.taskType = TaskType.OTHER; // Default task type
+        this.task = task;
     }
+
+
     public void setTask(Callable<T> task){
         this.task = task;
     }
