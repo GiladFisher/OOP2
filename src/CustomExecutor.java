@@ -8,7 +8,7 @@ import java.util.concurrent.TimeUnit;
 public class CustomExecutor {
     ThreadPoolExecutor executor;
     PriorityBlockingQueue<Runnable> taskQueue;
-
+    PriorityQueue<Integer> reversePriorityQueue;
 
     public CustomExecutor(){
 
@@ -16,20 +16,26 @@ public class CustomExecutor {
         this.taskQueue = new PriorityBlockingQueue<>();
 
         this.executor = new ThreadPoolExecutor(numOfCores / 2, numOfCores - 1, 300, TimeUnit.MILLISECONDS, this.taskQueue);
-
+        reversePriorityQueue = new PriorityQueue<>(Comparator.reverseOrder());
     }
     public void addTask(Task task){
         executor.submit(task);
+        reversePriorityQueue.add(task.getPriority());
     }
     public void addTask(Callable task, TaskType taskType){
         Task newTask = new Task(taskType, task);
         executor.submit(newTask);
+        reversePriorityQueue.add(newTask.getPriority());
     }
     public void addTask(Callable task){
         Task newTask = new Task(task);
         executor.submit(newTask);
+        reversePriorityQueue.add(newTask.getPriority());
     }
     public void executeFirst(){
     }
-    //PriorityQueue<E> pq = new PriorityQueue(int initialCapacity, Comparator<E> comparator);
+
+    public int getCurrentMax() {
+        return reversePriorityQueue.peek();
+    }
 }
