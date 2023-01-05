@@ -7,30 +7,27 @@ import java.util.concurrent.TimeUnit;
 
 public class CustomExecutor {
     ThreadPoolExecutor executor;
-    PriorityBlockingQueue<Task> taskQueue;
+    PriorityBlockingQueue<Runnable> taskQueue;
+
+
     public CustomExecutor(){
 
-        Comparator<Task> comparator = new Comparator<Task>() {
-            @Override
-            public int compare(Task o1, Task o2) {
-                return o1.compareTo(o2);
-            }
-        };
-
         int numOfCores = Runtime.getRuntime().availableProcessors();
-        this.executor = new ThreadPoolExecutor(numOfCores / 2, numOfCores - 1, 300, TimeUnit.MILLISECONDS, null);
-        taskQueue = new PriorityBlockingQueue<>(10, comparator);
+        this.taskQueue = new PriorityBlockingQueue<>();
+
+        this.executor = new ThreadPoolExecutor(numOfCores / 2, numOfCores - 1, 300, TimeUnit.MILLISECONDS, this.taskQueue);
+
     }
     public void addTask(Task task){
-        taskQueue.add(task);
+        executor.submit(task);
     }
     public void addTask(Callable task, TaskType taskType){
         Task newTask = new Task(taskType, task);
-        taskQueue.add(newTask);
+        executor.submit(newTask);
     }
     public void addTask(Callable task){
         Task newTask = new Task(task);
-        taskQueue.add(newTask);
+        executor.submit(newTask);
     }
     public void executeFirst(){
     }
