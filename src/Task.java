@@ -68,8 +68,7 @@ public class Task<T> implements Comparable<T>, Callable<T> {
     public T get() throws InterruptedException , ExecutionException {
         return future.get();
     }
-    public T get(long num, TimeUnit unit) throws Exception {
-        unit.sleep(num);
-        return future.get();
+    public T get(long num, TimeUnit unit) throws InterruptedException, ExecutionException, TimeoutException{
+        return future.get(num, unit);
     }
 }
