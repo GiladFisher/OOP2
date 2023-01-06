@@ -29,9 +29,9 @@ public class CustomExecutor {
         newTask.setFuture(future);
         return newTask;
     }
-    public <T> Task<T> submit(Callable<T> task){
+    public <T> void submit(Callable<T> task){
         Task<T> newTask = new Task<T>(task);
-        return submit(newTask);
+        submit(newTask);
     }
 //    public <T> executeFirst(){
 //        if (taskQueue.isEmpty()){return;}

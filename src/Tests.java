@@ -19,13 +19,13 @@ public class Tests {
             return sum;
         }, TaskType.COMPUTATIONAL);
         var sumTask = customExecutor.submit(task);
-//        final int sum;
-//        try {
-//            sum = sumTask.get(1, TimeUnit.MILLISECONDS);
-//        } catch (InterruptedException | ExecutionException | TimeoutException e) {
-//            throw new RuntimeException(e);
-//        }
-//        logger.info(()-> "Sum of 1 through 10 = " + sum);
+        final int sum;
+        try {
+            sum = sumTask.get(1, TimeUnit.MILLISECONDS);
+        } catch (InterruptedException | ExecutionException | TimeoutException e) {
+            throw new RuntimeException(e);
+        }
+        logger.info(()-> "Sum of 1 through 10 = " + sum);
         Callable<Double> callable1 = ()-> {
             return 1000 * Math.pow(1.02, 5);
         };
