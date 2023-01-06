@@ -10,7 +10,6 @@ public class Task<T> implements Comparable<T>, Callable<T> {
      * Constructor for Task
      * @param taskType the type of the task (enum)
      * @param task the callable task to be executed
-     * @param <T> the type of the return value of the callable object
      */
     public Task(TaskType taskType, Callable<T> task){
         this.taskType = taskType;
@@ -20,7 +19,6 @@ public class Task<T> implements Comparable<T>, Callable<T> {
     /**
      * Constructor for Task
      * @param task the callable task to be executed
-     * @param <T> the type of the return value of the callable object
      */
     public Task(Callable<T> task){
         this.taskType = TaskType.OTHER; // Default task type
@@ -41,7 +39,6 @@ public class Task<T> implements Comparable<T>, Callable<T> {
     /**
      * resets the Callable object of the task
      * @param task the callable task to be executed
-     * @param <T> the type of the return value of the callable object
      */
     public void setTask(Callable<T> task){
         this.task = task;
