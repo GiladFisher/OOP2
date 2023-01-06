@@ -55,17 +55,18 @@ public class MainFun {
         // ----------------- ThreadPoolExecutor Tests -----------------
         CustomExecutor executor = new CustomExecutor();
 //        executor.addTask(call, TaskType.COMPUTATIONAL);
-        executor.addTask((Callable) () -> {System.out.println("1"); return 1;});
-        executor.addTask(() -> {System.out.println("2"); return 1;});
-        executor.addTask(() -> {System.out.println("3"); return 1;});
-        executor.addTask(() -> {System.out.println("4"); return 1;});
-        executor.addTask((Callable)() -> {System.out.println("5"); return 1;});
-        executor.addTask(() -> {System.out.println("6"); return 1;});
-        executor.addTask(() -> {System.out.println("7"); return 1;});
-        executor.addTask(() -> {System.out.println("8"); return 1;});
-        executor.addTask(() -> {System.out.println("9"); return 1;});
-        executor.addTask(() -> {System.out.println("10"); return 1;});
-        executor.addTask(() -> {System.out.println("11"); return 1;});
+        executor.submit(() -> {System.out.println("1"); return 1;});
+        executor.submit(() -> {System.out.println("2"); return 1;});
+        executor.submit(() -> {System.out.println("3"); return 1;});
+        executor.submit(() -> {System.out.println("4"); return 1;});
+        executor.submit(() -> {System.out.println("5"); return 1;});
+        executor.submit(() -> {System.out.println("6"); return 1;});
+        executor.submit(() -> {System.out.println("7"); return 1;});
+        executor.submit(() -> {System.out.println("8"); return 1;});
+        executor.submit(() -> {System.out.println("9"); return 1;});
+        executor.submit(() -> {System.out.println("10"); return 1;});
+        executor.submit(() -> {System.out.println("11"); return 1;});
+
 //        executor.addTask(() -> {System.out.println("12");});
 //        executor.addTask(() -> {System.out.println("13");});
 //        executor.addTask(() -> {System.out.println("14");});

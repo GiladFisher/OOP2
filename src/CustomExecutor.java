@@ -17,7 +17,7 @@ public class CustomExecutor {
         reversePriorityQueue = new PriorityQueue<>(Comparator.reverseOrder());
     }
     public <T> Task<T> submit(Task task){
-        Future future = executor.submit(task);
+        Future<T> future = executor.submit(task);
         task.setFuture(future);
         reversePriorityQueue.add(task.getPriority());
         return task;
@@ -25,15 +25,13 @@ public class CustomExecutor {
     public <T> Task<T> submit(Callable task, TaskType taskType){
         Task newTask = new Task(taskType, task);
         reversePriorityQueue.add(newTask.getPriority());
-        Future future = executor.submit(newTask);
+         Future<T> future = executor.submit(newTask);
         newTask.setFuture(future);
         return newTask;
     }
     public <T> Task<T> submit(Callable task){
         Task newTask = new Task(task);
-        reversePriorityQueue.add(newTask.getPriority());
-        executor.submit(newTask);
-        return newTask;
+        return submit(newTask);
     }
 //    public <T> executeFirst(){
 //        if (taskQueue.isEmpty()){return;}
@@ -48,5 +46,14 @@ public class CustomExecutor {
     public int getCurrentMax() {
         if (reversePriorityQueue.isEmpty()) return 0;
         return reversePriorityQueue.peek();
+    }
+    public void gracefullyTerminate(){
+        while (!executor.isTerminated()){
+            try {
+                Thread.sleep(150);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
     }
 }
