@@ -21,9 +21,11 @@ The class "textThread" represents a thread and has a String that holds the name 
 
 The "Counter" class is used to define a new array of textTheads, to each it will assign a file name and will later sum the number of lines each textThread counted in it's file. 
 
+The "Task" implements Callable<Integer> and holds the fileName and the nuber of lines. The call() method works like the run() method in textThread and puts the result in the fileName parameter.
 
-
-
+The class "ThreadPool" has an instance of ExecutorService and an int numOfLines. it can find the sum of the number of lines of all of the files by creating an array, the size of n, of Future objects and initializes them by submitting each Task instance to the ExecutorService instance (each Task has a name of a different file)
+It will then sum out the numbers that eac of the Future objects hold to give us the total number of lines in all of the files combined.
+  
 #### Part two
 
 In this part of the assignment, we were asked to implenent an Executor. we were given an Enum class that has three possible values: COMPUTATIONAL, IO and OTHER.
