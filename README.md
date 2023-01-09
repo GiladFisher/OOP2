@@ -9,6 +9,7 @@ This assignment was divided into two parts:
 - Class Diagram
 - Installation
 - Tests
+- Conclusion
 
 ### Explanation
 
