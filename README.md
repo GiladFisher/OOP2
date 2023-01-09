@@ -11,3 +11,7 @@ This assignment was divided into two parts:
 - Tests
 
 ### Explanation
+#### Part one
+explain
+#### Part two
+In this part of the assignment, we were asked to implenent an Executor. we were given an Enum class that has three possible values: COMPUTATIONAL, IO and OTHER.
