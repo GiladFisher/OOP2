@@ -15,3 +15,5 @@ This assignment was divided into two parts:
 explain
 #### Part two
 In this part of the assignment, we were asked to implenent an Executor. we were given an Enum class that has three possible values: COMPUTATIONAL, IO and OTHER.
+The class "Task" has the parameter types TaskType, Future<T> and Callable<T> and it inherits the interfaces Callable and Comparable. This class will later be used to represent a Callable task in the priority queue and the TaskType will be used to prioritize it.
+The class "CustomExecutor" has the parameter types ThreadPoolExecutor and PriorityBlockingQueue<Runnable>. The user can submit tasks to an instance of CustomExecutor with a Callable<T>, Callable<T> and TaskType or with an instance of Task. The submit methos will return the Task instance that is submitted to the ThreadPoolExecutor and can later be used to extact the Future value of that Task and ultimetly, the return value.
