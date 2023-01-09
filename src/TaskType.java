@@ -10,34 +10,6 @@ public enum TaskType {
     OTHER(3){
         @Override
         public String toString(){return "Unknown Task";}
-    },
-    OTHER2(4){
-        @Override
-        public String toString(){return "Unknown Task";}
-    },
-    OTHER3(5){
-        @Override
-        public String toString(){return "Unknown Task";}
-    },
-    OTHER4(6){
-        @Override
-        public String toString(){return "Unknown Task";}
-    },
-    OTHER5(7){
-        @Override
-        public String toString(){return "Unknown Task";}
-    },
-    OTHER6(8){
-        @Override
-        public String toString(){return "Unknown Task";}
-    },
-    OTHER7(9){
-        @Override
-        public String toString(){return "Unknown Task";}
-    },
-    OTHER8(10){
-        @Override
-        public String toString(){return "Unknown Task";}
     };
     private int typePriority;
     private TaskType(int priority){
