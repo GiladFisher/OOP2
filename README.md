@@ -85,7 +85,7 @@ The "CustomExecutor" class has the parameter types ThreadPoolExecutor and Priori
   
 ## Installation
 
-To run this project you will specifically need Java 17. for the "Tests" file you will also need JUnit5.8.1 and "Maven" Framework.
+To run this project you will specifically need Java 17. For the "Tests" file you will also need JUnit5.8.1 and "Maven" Framework.
   
 ## Tests
   
