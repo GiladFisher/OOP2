@@ -78,6 +78,8 @@ The "Task" class has the parameter types TaskType, Future<T> and Callable<T> and
   
 The "CustomExecutor" class has the parameter types ThreadPoolExecutor and PriorityBlockingQueue<Runnable>. The user can submit tasks to an instance of CustomExecutor with a Callable<T>, Callable<T> and TaskType or with an instance of Task. The submit method will return the Task instance that is submitted to the ThreadPoolExecutor and can later be used to extract the Future value of that Task and ultimately, the return value.
   
+#### UML Diagram  
+  
 ![Screenshot 2023-01-09 202600](https://user-images.githubusercontent.com/117165853/211407121-3338ffd8-fbcc-43c9-817e-2d79e71a4835.png)
 
   
